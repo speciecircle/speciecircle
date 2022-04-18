@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="speciecircle" content=" Some Are Iller Than Others" />
+        <title>speciecircle</title>
+        <link rel="icon" type="image/x-icon" href="../pics/pic/speciemogulnew.png" />
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <!-- Ethereum Related -->
+      
+        
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+       <!-- Core theme CSS (includes Bootstrap)-->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;600&display=swap" rel="stylesheet">        <link href="css/styles.css" rel="stylesheet" />
+          <link href="css/styles.css" rel="stylesheet" />
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="modal fade" id="nowebModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " style = "position: relative; right: 8px;">
+    <div class="modal-content bg-black text-white" >
+     
+      <div class="modal-body bg-black text-white">
+        You don't have a Web 3.0 wallet installed.<br>
+        Please Install A Web 3.0 Wallet<br>
+        Try Installing <a class = "text-white " href="https://metamask.io/">MetaMask.<img  style = "  width: 30px; right: 10px;" src="pics/pic/meta.png"></a><br>
+         
+
+      </div>
+    
+    </div>
+  </div>
+</div>
+    
+    </head>
+    
+    <body id="page-top ">
+
+
+   
+
+    <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark text-white justify-content-center animate__animated animate__fadeInDown ">
+      <a class="navbar-brand text-white"  > 
+        
+        <button id = "buttoneth" value = "Connect"  class="btn btn-greygrey btn-outline-dark" style = "position: relative; top: -30px;right: 8px; font-size: 1px; padding: 10px 30px;"
+         >
+        <style>
+          .btn-greygrey {
+background-color: #222222  !important;
+}
+        </style>
+      
+      <a class="btn btn-black " style = "position: relative; padding: 0px 30px; right: 20px" ><img src="pics/pic/SZN1simpblack.png" width = "60px" style = "position: relative; border-radius: 0%; top: 0px; left: 0px; ">
+      <a class="btn btn-black btn-outline-warning" style = " position: relative;padding: 0px 30px; left: 5px;" href="Mogul"><img src="pics/pic/MSZN1.png" width = "60px" style = "position: relative; border-radius: 0%; top: 0px; ">
+    
+      </span> 
+        </button></a>
+      <style>
+    
+      </style>
+        
+      
+  </nav>
+        
+
+        
+        <!-- Masthead-->
+        <header class="masthead" style = "top: -30px"> 
+            
+            <div class="container d-flex h-100 align-items-center">
+            
+            
+                  <div class = "mx-auto text-center"> 
+                    <h1 class = "mx-auto my-0 text-uppercase"> 
+                    
+                    
+                    <!--SZN1 </BR> SZN1 </BR> SZN1 </BR--> <!--i><img class="img-fluid" src="/pics/pic/eth.png" alt=""/-->
+                     </h1>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5"> 
+ </h2>
+                
+                <!--p class="text-white-50">
+                       
+                        
+                    </p-->
+                    <!--a class="btn btn-primary js-scroll-trigger" href="#about">Get Started</a-->
+                </div>
+            </div>
+
+            
+        </header>
+
+        <!-- About-->
+        <nav  class="navbar fixed-top  bg-transparent text-white animate__animated animate__fadeInDown">
+          <a class="navbar-brand text-white animate__animated animate__fadeInDown">
+             
+            <button id = "buttoneth" value = "Connect"  class="btn btn-greygrey animate__animated animate__fadeInDown" style = "font-size: 1px; padding: 0px 3px;"
+            onclick = "connectx(); check(); changex();" >
+            <style>
+              .btn-greygrey {
+  background-color: #222222  !important;
+}
+            </style>
+           <script>
+
+               async function check() {
+        // Then get the currently selected radio button's value
+        
+        console.log(window.ethereum)
+  
+        if (window.ethereum !== undefined) {
+    // From now on, this should always be true:
+    // provider === window.ethereum
+            console.log(window.ethereum); // initialize your app
+            
+                                          } else {
+  
+            
+             $("#nowebModal").modal('show');
+    
+                                          }
+  
+        // Check the value to make sure you want to show the modal
+       
+      }
+               async function changex()
+  {  
+    const accounts = await ethereum.request({ method: 'eth_accounts' });
+    const balance = await ethereum.request({ method: 'eth_getBalance', params: [accounts[0], 'latest'] })
+    const chainIDs = await ethereum.request({method: 'eth_chainId'});
+if (chainIDs !== "0x89") {
+  document.getElementById("connecteth").innerHTML = "Switch To Polygon";
+  ethereum.on('chainChanged', (_chainId) => window.location.reload());
+
+} else {
+  document.getElementById("connecteth").innerHTML = accounts[0].substring(0,12) + "...";
+  document.getElementById("Avatar").src = "pics/pic/greenensimage.png"
+
+}
+  }
+async function connectx() {
+  const accounts = await ethereum.request({ method: 'eth_accounts' });
+
+  ethereum
+    .request({ method: 'eth_requestAccounts' })
+    .catch((err) => {
+      if (err.code === 4001) {
+        // EIP-1193 userRejectedRequest error
+        // If this happens, the user rejected the connection request.
+        console.log('Please connect to MetaMask.');
+        
+        // document.getElementById("Wallet").value=  "Rejected Connection";
+        document.getElementById("connecteth").innerHTML = "Rejected Connection";
+      } else {
+        console.error(err);
+      }
+    }).then( () => {
+changex();
+      
+    });
+
+  
+
+    
+}
+
+             </script> 
+            <img onload = "changex();" src="pics/pic/redensimage.png" id="Avatar" width = "50px" style = "position: relative; border-radius: 50%; top: 0px; left: 5px; ">
+            <a id = "connecteth"  class="text-white bg-darkgrey" style = "font-size: 15px; padding: 15px 8px; border-radius:3%; right: 3px; top: px;  position: relative"> Connect
+            </a>
+            </button></a>
+          <style>
+        
+          </style>
+            
+          
+        
+        </nav>     
+     
+        <!-- Contact-->
+        <section class="contact-section bg-black">
+            
+                 
+                <div class="social d-flex justify-content-center bg-black">
+                   <a class="mx-2" href='https://twitter.com/speciecircle'><i class="fab fa-twitter"></i></a>
+                   
+                </div>
+             </section>
+                     <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+<script>
+ // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBvkknbqcOM2KYG3Ja5VW4iW3ZZuSmVqOo",
+  authDomain: "speciecircle.firebaseapp.com",
+  projectId: "speciecircle",
+  storageBucket: "speciecircle.appspot.com",
+  messagingSenderId: "1098203895154",
+  appId: "1:1098203895154:web:a632af23f9a8ce1a8779eb",
+  measurementId: "G-23X951F93S"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</script>
+        <!-- Footer-->
+     
+        <footer class="footer bg-black small text-center text-white-50"><div class="container"><img class="img-fluid" src="pics/pic/ethb.png" width="100" height="130" alt=""/><a> © 2022 speciecircle </a></div></footer>
+        <!-- Bootstrap core JS-->
+       
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+       
+        <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Core theme JS-->
+        
+        <script type="text/javascript" src="js-main/utils.js"></script>
+        <script type="text/javascript" src="js-main/metaAcct.js"></script>
+      
+    </body>
+</html>
